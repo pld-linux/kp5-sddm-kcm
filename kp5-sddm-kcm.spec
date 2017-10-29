@@ -1,15 +1,15 @@
-%define		kdeplasmaver	5.4.0
+%define		kdeplasmaver	5.11.2
 %define		qtver		5.3.2
 %define		kpname		sddm-kcm
 
 Summary:	KDE Config Module for SDDM
 Name:		kp5-%{kpname}
-Version:	5.4.0
-Release:	2
+Version:	5.11.2
+Release:	1
 License:	LGPL v2.1+
 Group:		X11/Libraries
 Source0:	http://download.kde.org/stable/plasma/%{kdeplasmaver}/%{kpname}-%{version}.tar.xz
-# Source0-md5:	9483b80cb48a919328c682056c38ccba
+# Source0-md5:	1678bb9613c188186cef56b523fe68ae
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	cmake >= 2.8.12
@@ -62,3 +62,5 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kservices5/kcm_sddm.desktop
 %{_datadir}/polkit-1/actions/org.kde.kcontrol.kcmsddm.policy
 %{_datadir}/sddm-kcm
+/etc/xdg/sddmtheme.knsrc
+%attr(755,root,root) %{_bindir}/sddmthemeinstaller
