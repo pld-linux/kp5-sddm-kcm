@@ -1,15 +1,15 @@
-%define		kdeplasmaver	5.15.3
+%define		kdeplasmaver	5.21.2
 %define		qtver		5.9.0
 %define		kpname		sddm-kcm
 
 Summary:	KDE Config Module for SDDM
 Name:		kp5-%{kpname}
-Version:	5.15.3
+Version:	5.21.2
 Release:	1
 License:	LGPL v2.1+
 Group:		X11/Libraries
 Source0:	http://download.kde.org/stable/plasma/%{kdeplasmaver}/%{kpname}-%{version}.tar.xz
-# Source0-md5:	b2a458ec19d39cdecc969b1e5ad226dd
+# Source0-md5:	106b1547d984d01210bcda36066a3f97
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	cmake >= 2.8.12
@@ -37,6 +37,7 @@ install -d build
 cd build
 %cmake -G Ninja \
 	-DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
+	-DHTML_INSTALL_DIR=%{_kdedocdir} \
 	../
 %ninja_build
 
@@ -54,12 +55,19 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{kpname}.lang
 %defattr(644,root,root,755)
-/etc/dbus-1/system.d/org.kde.kcontrol.kcmsddm.conf
 %attr(755,root,root) %{_libexecdir}/kauth/kcmsddm_authhelper
-%attr(755,root,root) %{_libdir}/qt5/plugins/kcm_sddm.so
 %{_datadir}/dbus-1/system-services/org.kde.kcontrol.kcmsddm.service
 %{_datadir}/kservices5/kcm_sddm.desktop
 %{_datadir}/polkit-1/actions/org.kde.kcontrol.kcmsddm.policy
-%{_datadir}/sddm-kcm
-/etc/xdg/sddmtheme.knsrc
 %attr(755,root,root) %{_bindir}/sddmthemeinstaller
+%{_datadir}/dbus-1/system.d/org.kde.kcontrol.kcmsddm.conf
+%{_datadir}/knsrcfiles/sddmtheme.knsrc
+%attr(755,root,root) %{_libdir}/qt5/plugins/kcms/kcm_sddm.so
+%dir %{_datadir}/kpackage/kcms/kcm_sddm
+%dir %{_datadir}/kpackage/kcms/kcm_sddm/contents
+%dir %{_datadir}/kpackage/kcms/kcm_sddm/contents/ui
+%{_datadir}/kpackage/kcms/kcm_sddm/contents/ui/Advanced.qml
+%{_datadir}/kpackage/kcms/kcm_sddm/contents/ui/DetailsDialog.qml
+%{_datadir}/kpackage/kcms/kcm_sddm/contents/ui/main.qml
+%{_datadir}/kpackage/kcms/kcm_sddm/metadata.desktop
+%{_datadir}/kpackage/kcms/kcm_sddm/metadata.json
