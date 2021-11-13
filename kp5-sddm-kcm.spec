@@ -1,15 +1,15 @@
-%define		kdeplasmaver	5.23.2
+%define		kdeplasmaver	5.23.3
 %define		qtver		5.9.0
 %define		kpname		sddm-kcm
 
 Summary:	KDE Config Module for SDDM
 Name:		kp5-%{kpname}
-Version:	5.23.2
+Version:	5.23.3
 Release:	1
 License:	LGPL v2.1+
 Group:		X11/Libraries
 Source0:	http://download.kde.org/stable/plasma/%{kdeplasmaver}/%{kpname}-%{version}.tar.xz
-# Source0-md5:	6e9d69e846193e338dcd4d4f839ddec9
+# Source0-md5:	8361e38e6470441fe5767c81219a1168
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	cmake >= 2.8.12
