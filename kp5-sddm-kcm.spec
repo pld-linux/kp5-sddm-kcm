@@ -1,15 +1,15 @@
-%define		kdeplasmaver	5.23.5
+%define		kdeplasmaver	5.24.0
 %define		qtver		5.9.0
 %define		kpname		sddm-kcm
 
 Summary:	KDE Config Module for SDDM
 Name:		kp5-%{kpname}
-Version:	5.23.5
+Version:	5.24.0
 Release:	1
 License:	LGPL v2.1+
 Group:		X11/Libraries
 Source0:	http://download.kde.org/stable/plasma/%{kdeplasmaver}/%{kpname}-%{version}.tar.xz
-# Source0-md5:	c4b6a3533e29722b510476ab1fd7bbc6
+# Source0-md5:	9f4568cf9b1ace13f082bb38f45f0079
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	cmake >= 2.8.12
@@ -57,17 +57,15 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libexecdir}/kauth/kcmsddm_authhelper
 %{_datadir}/dbus-1/system-services/org.kde.kcontrol.kcmsddm.service
-%{_datadir}/kservices5/kcm_sddm.desktop
 %{_datadir}/polkit-1/actions/org.kde.kcontrol.kcmsddm.policy
 %attr(755,root,root) %{_bindir}/sddmthemeinstaller
 %{_datadir}/dbus-1/system.d/org.kde.kcontrol.kcmsddm.conf
 %{_datadir}/knsrcfiles/sddmtheme.knsrc
-%attr(755,root,root) %{_libdir}/qt5/plugins/kcms/kcm_sddm.so
 %dir %{_datadir}/kpackage/kcms/kcm_sddm
 %dir %{_datadir}/kpackage/kcms/kcm_sddm/contents
 %dir %{_datadir}/kpackage/kcms/kcm_sddm/contents/ui
 %{_datadir}/kpackage/kcms/kcm_sddm/contents/ui/Advanced.qml
 %{_datadir}/kpackage/kcms/kcm_sddm/contents/ui/DetailsDialog.qml
 %{_datadir}/kpackage/kcms/kcm_sddm/contents/ui/main.qml
-%{_datadir}/kpackage/kcms/kcm_sddm/metadata.desktop
-%{_datadir}/kpackage/kcms/kcm_sddm/metadata.json
+%{_libdir}/qt5/plugins/plasma/kcms/systemsettings/kcm_sddm.so
+%{_desktopdir}/kcm_sddm.desktop
