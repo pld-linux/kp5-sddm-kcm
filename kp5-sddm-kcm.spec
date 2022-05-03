@@ -1,18 +1,18 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeplasmaver	5.24.4
+%define		kdeplasmaver	5.24.5
 %define		qtver		5.9.0
 %define		kpname		sddm-kcm
 
 Summary:	KDE Config Module for SDDM
 Name:		kp5-%{kpname}
-Version:	5.24.4
+Version:	5.24.5
 Release:	1
 License:	LGPL v2.1+
 Group:		X11/Libraries
 Source0:	http://download.kde.org/stable/plasma/%{kdeplasmaver}/%{kpname}-%{version}.tar.xz
-# Source0-md5:	facfe27b8297ce048a5ee97b44c3ed57
+# Source0-md5:	c8c3287e326972154da67308375fd0e1
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	cmake >= 2.8.12
