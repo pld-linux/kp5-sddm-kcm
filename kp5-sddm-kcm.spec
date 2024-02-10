@@ -1,33 +1,33 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeplasmaver	5.27.10
+%define		kdeplasmaver	5.93.0
 %define		qtver		5.15.2
 %define		kpname		sddm-kcm
 
 Summary:	KDE Config Module for SDDM
 Name:		kp5-%{kpname}
-Version:	5.27.10
-Release:	1
+Version:	5.93.0
+Release:	0.1
 License:	LGPL v2.1+
 Group:		X11/Libraries
-Source0:	https://download.kde.org/stable/plasma/%{kdeplasmaver}/%{kpname}-%{version}.tar.xz
-# Source0-md5:	1af573d08dd99879f27c5a2b55b02bc9
+Source0:	https://download.kde.org/unstable/plasma/%{kdeplasmaver}/%{kpname}-%{version}.tar.xz
+# Source0-md5:	a1c2642461af0d8e4d388b4d88af54a7
 URL:		http://www.kde.org/
-BuildRequires:	Qt5Core-devel >= %{qtver}
+BuildRequires:	Qt6Core-devel >= %{qtver}
 BuildRequires:	cmake >= 3.16.0
-BuildRequires:	kf5-kauth-devel
-BuildRequires:	kf5-kconfigwidgets-devel
-BuildRequires:	kf5-kcoreaddons-devel
-BuildRequires:	kf5-ki18n-devel
-BuildRequires:	kf5-kio-devel
-BuildRequires:	kf5-kxmlgui-devel
+BuildRequires:	kf6-kauth-devel
+BuildRequires:	kf6-kconfigwidgets-devel
+BuildRequires:	kf6-kcoreaddons-devel
+BuildRequires:	kf6-ki18n-devel
+BuildRequires:	kf6-kio-devel
+BuildRequires:	kf6-kxmlgui-devel
 BuildRequires:	ninja
 BuildRequires:	rpmbuild(macros) >= 1.164
 BuildRequires:	xz
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		qt5dir		%{_libdir}/qt5
+%define		qt6dir		%{_libdir}/qt6
 
 %description
 KDE Config Module for SDDM.
@@ -61,17 +61,11 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{kpname}.lang
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libexecdir}/kauth/kcmsddm_authhelper
 %{_datadir}/dbus-1/system-services/org.kde.kcontrol.kcmsddm.service
 %{_datadir}/polkit-1/actions/org.kde.kcontrol.kcmsddm.policy
 %attr(755,root,root) %{_bindir}/sddmthemeinstaller
 %{_datadir}/dbus-1/system.d/org.kde.kcontrol.kcmsddm.conf
 %{_datadir}/knsrcfiles/sddmtheme.knsrc
-%dir %{_datadir}/kpackage/kcms/kcm_sddm
-%dir %{_datadir}/kpackage/kcms/kcm_sddm/contents
-%dir %{_datadir}/kpackage/kcms/kcm_sddm/contents/ui
-%{_datadir}/kpackage/kcms/kcm_sddm/contents/ui/Advanced.qml
-%{_datadir}/kpackage/kcms/kcm_sddm/contents/ui/DetailsDialog.qml
-%{_datadir}/kpackage/kcms/kcm_sddm/contents/ui/main.qml
-%{_libdir}/qt5/plugins/plasma/kcms/systemsettings/kcm_sddm.so
+%attr(755,root,root) %{_libdir}/qt6/plugins/plasma/kcms/systemsettings/kcm_sddm.so
 %{_desktopdir}/kcm_sddm.desktop
+%attr(755,root,root) %{_prefix}/libexec/kf6/kauth/kcmsddm_authhelper
